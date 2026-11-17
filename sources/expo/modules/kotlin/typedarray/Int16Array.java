@@ -1,0 +1,148 @@
+package expo.modules.kotlin.typedarray;
+
+import com.facebook.react.uimanager.ViewProps;
+import com.reactcommunity.rndatetimepicker.RNConstants;
+import expo.modules.kotlin.jni.JavaScriptTypedArray;
+import expo.modules.kotlin.jni.TypedArrayKind;
+import expo.modules.kotlin.typedarray.GenericTypedArray;
+import java.nio.ByteBuffer;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+
+/* compiled from: ConcreteTypedArrays.kt */
+@Metadata(m41d1 = {"\u0000Z\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010\n\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\b\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0012\n\u0002\b\u0005\n\u0002\u0010\t\n\u0000\n\u0002\u0010\u0005\n\u0000\n\u0002\u0010\u0006\n\u0000\n\u0002\u0010\u0007\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\b\u0018\u00002\u00020\u00012\b\u0012\u0004\u0012\u00020\u00030\u0002B\r\u0012\u0006\u0010\u0004\u001a\u00020\u0005¢\u0006\u0002\u0010\u0006J\u0016\u0010\u0013\u001a\u00020\u00032\u0006\u0010\u0014\u001a\u00020\bH\u0096\u0002¢\u0006\u0002\u0010\u0015J!\u0010\u0016\u001a\u00020\u00172\u0006\u0010\u0018\u001a\u00020\u00192\u0006\u0010\u001a\u001a\u00020\b2\u0006\u0010\u001b\u001a\u00020\bH\u0096\u0001J\u0011\u0010\u001c\u001a\u00020\u00032\u0006\u0010\u001a\u001a\u00020\bH\u0096\u0001J\u0011\u0010\u001d\u001a\u00020\b2\u0006\u0010\u001a\u001a\u00020\bH\u0096\u0001J\u0011\u0010\u001e\u001a\u00020\u001f2\u0006\u0010\u001a\u001a\u00020\bH\u0096\u0001J\u0011\u0010 \u001a\u00020!2\u0006\u0010\u001a\u001a\u00020\bH\u0096\u0001J\u0011\u0010\"\u001a\u00020#2\u0006\u0010\u001a\u001a\u00020\bH\u0096\u0001J\u0011\u0010$\u001a\u00020%2\u0006\u0010\u001a\u001a\u00020\bH\u0096\u0001J\u0019\u0010&\u001a\u00020\u00172\u0006\u0010\u0014\u001a\u00020\b2\u0006\u0010'\u001a\u00020\u0003H\u0096\u0002J\t\u0010(\u001a\u00020)H\u0096\u0001J!\u0010*\u001a\u00020\u00172\u0006\u0010\u0018\u001a\u00020\u00192\u0006\u0010\u001a\u001a\u00020\b2\u0006\u0010\u001b\u001a\u00020\bH\u0096\u0001J\u0019\u0010+\u001a\u00020\u00172\u0006\u0010\u001a\u001a\u00020\b2\u0006\u0010'\u001a\u00020\u0003H\u0096\u0001J\u0019\u0010,\u001a\u00020\u00172\u0006\u0010\u001a\u001a\u00020\b2\u0006\u0010'\u001a\u00020\bH\u0096\u0001J\u0019\u0010-\u001a\u00020\u00172\u0006\u0010\u001a\u001a\u00020\b2\u0006\u0010'\u001a\u00020\u001fH\u0096\u0001J\u0019\u0010.\u001a\u00020\u00172\u0006\u0010\u001a\u001a\u00020\b2\u0006\u0010'\u001a\u00020!H\u0096\u0001J\u0019\u0010/\u001a\u00020\u00172\u0006\u0010\u001a\u001a\u00020\b2\u0006\u0010'\u001a\u00020#H\u0096\u0001J\u0019\u00100\u001a\u00020\u00172\u0006\u0010\u001a\u001a\u00020\b2\u0006\u0010'\u001a\u00020%H\u0096\u0001R\u0012\u0010\u0007\u001a\u00020\bX\u0096\u0005¢\u0006\u0006\u001a\u0004\b\t\u0010\nR\u0012\u0010\u000b\u001a\u00020\bX\u0096\u0005¢\u0006\u0006\u001a\u0004\b\f\u0010\nR\u0012\u0010\r\u001a\u00020\u000eX\u0096\u0005¢\u0006\u0006\u001a\u0004\b\u000f\u0010\u0010R\u0012\u0010\u0011\u001a\u00020\bX\u0096\u0005¢\u0006\u0006\u001a\u0004\b\u0012\u0010\nR\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u0004¢\u0006\u0002\n\u0000¨\u00061"}, m40d2 = {"Lexpo/modules/kotlin/typedarray/Int16Array;", "Lexpo/modules/kotlin/typedarray/TypedArray;", "Lexpo/modules/kotlin/typedarray/GenericTypedArray;", "", "rawArray", "Lexpo/modules/kotlin/jni/JavaScriptTypedArray;", "(Lexpo/modules/kotlin/jni/JavaScriptTypedArray;)V", "byteLength", "", "getByteLength", "()I", "byteOffset", "getByteOffset", "kind", "Lexpo/modules/kotlin/jni/TypedArrayKind;", "getKind", "()Lexpo/modules/kotlin/jni/TypedArrayKind;", "length", "getLength", "get", "index", "(I)Ljava/lang/Short;", "read", "", "buffer", "", ViewProps.POSITION, "size", "read2Byte", "read4Byte", "read8Byte", "", "readByte", "", "readDouble", "", "readFloat", "", "set", RNConstants.ARG_VALUE, "toDirectBuffer", "Ljava/nio/ByteBuffer;", "write", "write2Byte", "write4Byte", "write8Byte", "writeByte", "writeDouble", "writeFloat", "expo-modules-core_release"}, m39k = 1, m38mv = {1, 6, 0}, m36xi = 48)
+/* loaded from: classes2.dex */
+public final class Int16Array implements TypedArray, GenericTypedArray<Short> {
+    private final JavaScriptTypedArray rawArray;
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public int getByteLength() {
+        return this.rawArray.getByteLength();
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public int getByteOffset() {
+        return this.rawArray.getByteOffset();
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public TypedArrayKind getKind() {
+        return this.rawArray.getKind();
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public int getLength() {
+        return this.rawArray.getLength();
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public void read(byte[] buffer, int i, int i2) {
+        Intrinsics.checkNotNullParameter(buffer, "buffer");
+        this.rawArray.read(buffer, i, i2);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public short read2Byte(int i) {
+        return this.rawArray.read2Byte(i);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public int read4Byte(int i) {
+        return this.rawArray.read4Byte(i);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public long read8Byte(int i) {
+        return this.rawArray.read8Byte(i);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public byte readByte(int i) {
+        return this.rawArray.readByte(i);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public double readDouble(int i) {
+        return this.rawArray.readDouble(i);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public float readFloat(int i) {
+        return this.rawArray.readFloat(i);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public ByteBuffer toDirectBuffer() {
+        return this.rawArray.toDirectBuffer();
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public void write(byte[] buffer, int i, int i2) {
+        Intrinsics.checkNotNullParameter(buffer, "buffer");
+        this.rawArray.write(buffer, i, i2);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public void write2Byte(int i, short s) {
+        this.rawArray.write2Byte(i, s);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public void write4Byte(int i, int i2) {
+        this.rawArray.write4Byte(i, i2);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public void write8Byte(int i, long j) {
+        this.rawArray.write8Byte(i, j);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public void writeByte(int i, byte b) {
+        this.rawArray.writeByte(i, b);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public void writeDouble(int i, double d) {
+        this.rawArray.writeDouble(i, d);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.TypedArray
+    public void writeFloat(int i, float f) {
+        this.rawArray.writeFloat(i, f);
+    }
+
+    public Int16Array(JavaScriptTypedArray rawArray) {
+        Intrinsics.checkNotNullParameter(rawArray, "rawArray");
+        this.rawArray = rawArray;
+    }
+
+    @Override // expo.modules.kotlin.typedarray.GenericTypedArray, java.lang.Iterable
+    public Iterator<Short> iterator() {
+        return GenericTypedArray.DefaultImpls.iterator(this);
+    }
+
+    @Override // expo.modules.kotlin.typedarray.GenericTypedArray
+    public /* bridge */ /* synthetic */ void set(int i, Short sh) {
+        set(i, sh.shortValue());
+    }
+
+    @Override // expo.modules.kotlin.typedarray.GenericTypedArray
+    public Short get(int i) {
+        Int16Array int16Array = this;
+        if (i >= 0 && i < int16Array.getLength()) {
+            return Short.valueOf(read2Byte(i * 2));
+        }
+        throw new IndexOutOfBoundsException();
+    }
+
+    public void set(int i, short s) {
+        Int16Array int16Array = this;
+        if (i >= 0 && i < int16Array.getLength()) {
+            write2Byte(i * 2, s);
+            return;
+        }
+        throw new IndexOutOfBoundsException();
+    }
+}

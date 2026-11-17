@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Фон adaptive-иконки. Белый, как подложка логотипа: лаунчер вырезает из него
+  маску (круг/сквокл/ромб), и на светлых обоях иконка не темнее соседей.
+-->
+<resources>
+    <color name="ic_launcher_background">#FFFFFF</color>
+</resources>

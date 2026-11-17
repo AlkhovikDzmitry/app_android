@@ -1,0 +1,26 @@
+Ты помогаешь собрать iOS-версию Flutter-приложения и подготовить его к загрузке в App Store.
+
+## Контекст
+Приложение «БЕЛТЕХОСМОТР» — клиент белорусского портала техосмотра gto.by. Написано на Flutter (Dart 3.10.4, Flutter 3.38.5). Проект лежит в папке D:\personal\adv\app_android (на этом Mac — укажи фактический путь, куда скопирован проект). Android-версия уже собирается и работает. Папка ios/ создана, но iOS ещё ни разу не собиралась.
+
+## Что уже настроено
+- Bundle ID: by.gto.beltech (в ios/Runner.xcodeproj/project.pbxproj)
+- Иконки iOS — стандартные Flutter, НЕ заменены на иконки приложения
+- Firebase подключён в pubspec (firebase_core, firebase_messaging), но GoogleService-Info.plist отсутствует — приложение работает и без него (инициализация обёрнута в try/catch), push-уведомления не будут работать
+- Версия приложения: 1.0.0+1 (в pubspec.yaml)
+- В коде используются плагины: dio, cookie_jar, flutter_secure_storage, shared_preferences, webview_flutter, provider, go_router, intl, flutter_widget_from_html_core. local_auth и google_maps_flutter есть в pubspec, но в коде не используются.
+
+## Что нужно сделать
+1. Проверь окружение: flutter doctor, наличие Xcode и CocoaPods. Установи недостающее.
+2. Замени иконки приложения в ios/Runner/Assets.xcassets/AppIcon.appiconset на иконки БЕЛТЕХОСМОТР (все размеры, включая 1024x1024). Иконки БЕЛТЕХОСМОТР можно взять из android/app/src/main/res/mipmap-*/ic_launcher.png или попроси меня предоставить исходник.
+3. Проверь и при необходимости поправь Info.plist: название приложения (сейчас "БЕЛТЕХОСМОТР"), ориентации, и добавь ключи, если нужны (например, NSAppTransportSecurity для http, если API требует).
+4. Убедись, что bundle ID by.gto.beltech уникален и не занят (проверь в App Store Connect).
+5. Выполни flutter pub get и flutter build ios --release (без подписи, --no-codesign) — убедись, что проект компилируется. Исправь все ошибки сборки.
+6. Если нужно — добавь GoogleService-Info.plist из Firebase-проекта (попроси у меня файл) и настрой push-уведомления (capability Push Notifications, Background Modes).
+7. Дай пошаговую инструкцию: как подписать приложение в Xcode (Signing & Capabilities) с аккаунтом Apple Developer Program, как собрать flutter build ipa --release и загрузить в App Store Connect (Xcode Organizer или Transporter).
+8. Перечисли требования App Store Connect: скриншоты, политика конфиденциальности (обязательна, т.к. есть регистрация/вход), описание, категория, возрастной рейтинг.
+
+## Важно
+- Не меняй логику приложения и API-эндпоинты — только iOS-настройки и сборку.
+- Если что-то неясно или нужны файлы (иконки, GoogleService-Info.plist) — спроси меня.
+- Отвечай на русском.

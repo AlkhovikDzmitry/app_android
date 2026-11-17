@@ -1,0 +1,6 @@
+#include "Generated.xcconfig"
+
+// Set GOOGLE_MAPS_API_KEY in ios/Flutter/GoogleMaps.xcconfig (git-ignored)
+// or export it before running `flutter build ios`.
+GOOGLE_MAPS_API_KEY=
+#include? "GoogleMaps.xcconfig"

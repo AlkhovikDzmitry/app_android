@@ -1,0 +1,4 @@
+// Шаблон: скопируйте в ios/Flutter/GoogleMaps.xcconfig (файл в .gitignore)
+// и вставьте ключ Google Maps для iOS (bundle id by.gto.beltech).
+// Значение подставляется в Info.plist (GMSApiKey) при сборке Xcode.
+GOOGLE_MAPS_API_KEY=ВСТАВЬТЕ_СЮДА_КЛЮЧ
